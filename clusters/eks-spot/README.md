@@ -34,7 +34,12 @@ After finish the process, run the following command to get the `kubeconfig`:
 
 ```bash
 export KUBECONFIG=~/.kube/demo
-aws eks update-kubeconfig --name cluster-demonstration
+aws eks update-kubeconfig --name cluster-lvbo
+```
+
+```bash
+export KUBECONFIG=~/.kube/demo2
+aws eks update-kubeconfig --name cluster-lvbo2
 ```
 
 Then testing the cluster:
@@ -87,5 +92,5 @@ kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.
 * Create the GPU workload.
 
 ```sh
-kubectl apply -f manifest/gpu-workload.yaml 
+kubectl apply -f manifest/gpu-workload.yaml
 ```

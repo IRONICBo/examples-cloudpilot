@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: stress-pod
+spec:
+  containers:
+  - name: pod-stress-test
+    image: polinux/stress-ng
+    command: [ "/bin/bash", "-c", "--" ]
+    # args: [ "stress-ng --all 0 --timeout 1m --metrics" ]
+    # args: [ "stress-ng --cpu 1 --vm 1 --fork 8 --timeout 1m --metrics" ]
+    # args: [ "stress-ng --cpu 4 --vm 4 --bigheap 4 --vm-bytes 1G --timeout 1m --metrics" ]
+    args: [ "stress-ng --taskset 0 --class cpu,cpu-cache,memory,vm --seq 0 --timeout 1m --metrics" ]
+    resources:
+      requests:
+        cpu: 1
+        memory: 1Gi
+      limits:
+        cpu: 1
+        memory: 1Gi
+  # nodeName: ip-10-0-38-206.us-east-2.compute.internal

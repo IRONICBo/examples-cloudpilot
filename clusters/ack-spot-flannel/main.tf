@@ -54,7 +54,7 @@ resource "alicloud_cs_managed_kubernetes" "default" {
   worker_vswitch_ids = split(",", join(",", alicloud_vswitch.vswitches.*.id)) # 节点池所在的vSwitch。指定一个或多个vSwitch的ID，必须在availability_zone指定的区域中。
   new_nat_gateway    = true               # 是否在创建Kubernetes集群时创建新的NAT网关。默认为true。
   pod_cidr           = "10.169.0.0/16"     # Pod网络的CIDR块。
-  service_cidr       = "192.168.0.0/16" 
+  service_cidr       = "192.168.0.0/16"
   slb_internet_enabled = true             # 是否为API Server创建Internet负载均衡。默认为false。
   enable_rrsa        = true
 

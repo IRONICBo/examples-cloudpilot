@@ -6,7 +6,7 @@ data "aws_caller_identity" "current" {}
 data "aws_availability_zones" "available" {}
 
 locals {
-  name            = "cluster-demonstration"
+  name            = "cluster-lvbo"
   cluster_version = "1.31"
   region          = "us-east-2"
 
@@ -71,7 +71,15 @@ module "eks" {
       name = "eks-spot"
 
       # amd64
-      instance_types = ["t3.xlarge"]
+      # 2c4g
+      # instance_types = ["t3.large"]
+      # instance_types = ["m4.large"]
+      # instance_types = ["m5n.large"]
+      # instance_types = ["m5a.large"]
+      # instance_types = ["m6a.large"]
+      # instance_types = ["m7a.large"]
+      # test elastic search
+      instance_types = ["m6i.4xlarge"]
       ami_type       = "AL2_x86_64"
 
       # arm64
@@ -79,8 +87,8 @@ module "eks" {
       # ami_type       = "AL2_ARM_64"
 
       min_size     = 1
-      max_size     = 6
-      desired_size = 2
+      max_size     = 1
+      desired_size = 1
 
       capacity_type = "SPOT"
       spot_max_price = "10"
