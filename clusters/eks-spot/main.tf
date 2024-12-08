@@ -156,6 +156,9 @@ module "eks" {
     }
   }
 
+  # Disable cluster logging to reduce costs
+  cluster_enabled_log_types = []
+
   tags = local.tags
 }
 
