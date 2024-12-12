@@ -79,31 +79,18 @@ esJavaOpts: "" # example: "-Xmx1g -Xms1g"
 
 resources:
   requests:
-    # cpu: 3220m
-    # memory: 14164820Ki
-    # cpu: 2090m
-    # memory: 4792728Ki
-    # cpu: "1000m"
-    # memory: "2Gi"
-    # m6i
-    cpu: 15090m
-    memory: 60792728Ki
-    # t3.medium
-    # cpu: 1
-    # memory: 2Gi
+    # m5d
+    # cpu: 30850m
+    # memory: 125013992Ki
+    # t3 medium
+    cpu: "1230m"
+    memory: "2588292Ki"
   limits:
-    # cpu: 3220m
-    # memory: 14164820Ki
-    # cpu: 2090m
-    # memory: 4792728Ki
-    # cpu: "1000m"
-    # memory: "2Gi"
-    # m6i
-    cpu: 15090m
-    memory: 60792728Ki
-    # t3.medium
-    # cpu: 1
-    # memory: 2Gi
+    # cpu: 30850m
+    # memory: 125013992Ki
+    # t3 medium
+    cpu: "1230m"
+    memory: "2588292Ki"
 
 initResources:
   {}

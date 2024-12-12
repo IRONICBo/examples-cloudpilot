@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      containers:
+      - name: webserver
+        # image: docker.io/asklv/webserver-2239c29d5987238724a34ea5ffcbd0f1@sha256:e51c72f8c1b9ad9623d441cf31543ba9f53c57059445e74010989c0567b00982
+        # no copy
+        # image: docker.io/asklv/webserver-2239c29d5987238724a34ea5ffcbd0f1@sha256:04990f7c0ba9e7531ef367ef1dcb0b3c01e2c5cf593a36f81cf091a13bdd8032
+        # start all 10mb
+        image: docker.io/asklv/webserver-2239c29d5987238724a34ea5ffcbd0f1@sha256:ffcca3622390ebde377c9af3af67484d520fb94d299991c8748efd0b91e24024
+        securityContext:
+          runAsUser: 0
+          runAsGroup: 0
+          allowPrivilegeEscalation: true
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webserver-service
+spec:
+  selector:
+    app: webserver
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      # nodePort: 30000
+  # type: NodePort
+  type: LoadBalancer

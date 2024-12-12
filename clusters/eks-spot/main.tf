@@ -79,7 +79,13 @@ module "eks" {
       # instance_types = ["m6a.large"]
       # instance_types = ["m7a.large"]
       # test elastic search
-      instance_types = ["m6i.4xlarge"]
+      # instance_types = ["m6i.4xlarge"]
+      # test elastic search
+      # instance_types = ["t3.xlarge"]
+      # Choose instance
+      # instance_types = ["t3.small"]
+      # instance_types = ["t3.medium"]
+      instance_types = ["m5d.8xlarge"]
       ami_type       = "AL2_x86_64"
 
       # arm64

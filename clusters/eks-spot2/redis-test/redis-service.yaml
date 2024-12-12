@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-with-benchmark
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-benchmark
+  template:
+    metadata:
+      labels:
+        app: redis-benchmark
+    spec:
+      containers:
+        - name: redis
+          image: redis:latest
+          ports:
+            - containerPort: 6379
+          command: ["redis-server"]
+
+        - name: redis-benchmark
+          image: redis:latest
+          command:
+            - "sh"
+            - "-c"
+            - |
+              echo "Waiting for Redis to start..."; \
+              sleep 5; \
+              redis-benchmark -h 127.0.0.1 -p 6379 -c 50 -n 10000
+          env:
+            - name: REDIS_HOST
+              value: "127.0.0.1"

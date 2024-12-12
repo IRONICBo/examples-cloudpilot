@@ -77,7 +77,9 @@ module "eks" {
       # instance_types = ["m6i.large"]
       # instance_types = ["m7i.large"]
       # instance_types = ["c7i.large"]
-      instance_types = ["m5d.8xlarge"]
+      # instance_types = ["m5d.8xlarge"]
+      # instance_types = ["t3.medium"]
+      instance_types = ["t3.large"]
       ami_type       = "AL2_x86_64"
 
       # arm64
